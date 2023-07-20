@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfico de Barras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gráfico de Barras</h1>
+  <canvas id="barChart" width="400" height="300"></canvas>
+
+  <script>
+    // Dados para o gráfico de exemplo
+    const data = [10, 30, 50, 20, 40, 70];
+
+    const canvas = document.getElementById('barChart');
+    const ctx = canvas.getContext('2d');
+
+    // Configurações do gráfico
+    const barWidth = 40;
+    const barSpacing = 10;
+    const chartMargin = 30;
+    const chartHeight = canvas.height - 2 * chartMargin;
+    const chartWidth = canvas.width - 2 * chartMargin;
+
+    // Função para desenhar o gráfico de barras
+    function drawBarChart(data) {
+      const maxValue = Math.max(...data);
+      const scale = chartHeight / maxValue;
+
+      for (let i = 0; i < data.length; i++) {
+        const barHeight = data[i] * scale;
+        const x = chartMargin + i * (barWidth + barSpacing);
+        const y = canvas.height - chartMargin - barHeight;
+        
+        ctx.fillStyle = '#007bff'; // Cor das barras (azul)
+        ctx.fillRect(x, y, barWidth, barHeight);
+
+        // Escreve o valor acima das barras
+        ctx.fillStyle = '#000'; // Cor do texto (preto)
+        ctx.font = '12px Arial';
+        ctx.fillText(data[i], x + barWidth / 2 - 8, y - 8);
+      }
+    }
+
+    drawBarChart(data);
+  </script>
+</body>
+</html>

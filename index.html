@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!" />
+    <meta name="keywords" content="calendar, events, reminders, javascript, html, css, open source coding" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+
+
+
+    <title>Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+        }
+
+        .wrapper .sidebar {
+            background: rgb(5, 68, 104);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .sidebar .profile {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .wrapper .sidebar .profile img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .wrapper .sidebar .profile h3 {
+            color: #ffffff;
+            margin: 10px 0 5px;
+        }
+
+        .wrapper .sidebar .profile p {
+            color: rgb(206, 240, 253);
+            font-size: 14px;
+        }
+
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 13px 30px;
+            border-bottom: 1px solid #10558d;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .wrapper .sidebar ul li a:hover .icon,
+        .wrapper .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before {
+            display: block;
+        }
+
+        .wrapper .section {
+            width: calc(100% - 225px);
+            margin-left: 225px;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .section .top_navbar {
+            background: rgb(7, 105, 185);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+
+        }
+
+        .wrapper .section .top_navbar .hamburger a {
+            font-size: 28px;
+            color: #f4fbff;
+        }
+
+        .wrapper .section .top_navbar .hamburger a:hover {
+            color: #a2ecff;
+        }
+
+
+
+        body.active .wrapper .sidebar {
+            left: -225px;
+        }
+
+        body.active .wrapper .section {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .wrapper .sidebar {
+            background: rgb(5, 68, 104);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+            overflow-y: auto;
+            /* Adicione esta linha para adicionar a barra de rolagem */
+        }
+
+        .page-content {
+            padding: 20px;
+            background: #ffffff;
+        }
+
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+            background: white;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .hidden-buttons {
+            display: none;
+        }
+
+        .btn-group .btn-check {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+        }
+    </style>
+
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="page-content">
+                <h1>Bem-vindo à página Home!</h1>
+                <p>Aqui você tem acesso a informações sobre a ferramenta.</p>
+
+
+
+
+                <!-- Menu-->
+                <!-- Menu-->
+                <!-- Menu-->
+                <div class="sidebar">
+                    <div class="profile">
+                        <img src="https://josianepereira.adv.br/img/login.png" alt="imagem-login">
+                        <h3>Josiane Pereira</h3>
+                        <p>Advogada</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#" class="<?php echo ($currentPage === 'Home') ? 'active' : ''; ?>">
+                                <span class="icon"><i class="fas fa-home"></i></span>
+                                <span class="item">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/src/pages/teste.html">
+                                <span class="icon"><i class="fas fa-desktop"></i></span>
+                                <span class="item">My Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/src/pages/clientes.php"
+                                class="<?php echo ($currentPage === 'clientes') ? 'active' : ''; ?>">
+                                <span class="icon"><i class="fas fa-user-friends"></i></span>
+                                <span class="item">Cadastro de Clientes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/src/pages/processo.php"
+                                class="<?php echo ($currentPage === 'processo') ? 'active' : ''; ?>">
+                                <span class="icon"><i class="fas fa-print"></i></span>
+                                <span class="item">Cadastro de Processos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/src/pages/alteramsg.php"
+                                class="<?php echo ($currentPage === 'SISZAP') ? 'active' : ''; ?>">
+                                <span class="icon"><i class="fas fa-database"></i></span>
+                                <span class="item">SISZAP - Mensagens</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-paperclip"></i></span>
+                                <span class="item">Agenda</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-user-shield"></i></span>
+                                <span class="item">Trocar Usuário</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/src/pages/obterid.php"
+                                class="<?php echo ($currentPage === 'Settings') ? 'active' : ''; ?>">
+                                <span class="icon"><i class="fas fa-cog"></i></span>
+                                <span class="item">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="logout-link">
+                                <span class="icon"><i class="fas fa-paper-plane"></i></span>
+                                <span class="item">Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="CorpoPrincipal">
+                    <div class="container">
+                        <aside>
+                            <div class="toggle">
+
+                                <div class="close" id="close-btn">
+                                    <span class="material-icons-sharp">
+                                        close
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </aside>
+
+                        <main>
+                            <h1>Analytics</h1>
+                            <div class="analyse">
+                                <div class="sales">
+                                    <div class="status">
+                                        <div class="info">
+                                            <h3>Total Usuarios</h3>
+                                            <h1>&nbsp;10</h1>
+                                        </div>
+                                        <div class="progresss">
+                                            <svg>
+                                                <circle cx="38" cy="38" r="36"></circle>
+                                            </svg>
+                                            <div class="percentage">
+                                                <p>+81%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="visits">
+                                    <div class="status">
+                                        <div class="info">
+                                            <h3>Total de Processos Ativos</h3>
+                                            <h1>24,981</h1>
+                                        </div>
+                                        <div class="progresss">
+                                            <svg>
+                                                <circle cx="38" cy="38" r="36"></circle>
+                                            </svg>
+                                            <div class="percentage">
+                                                <p>-48%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="searches">
+                                    <div class="status">
+                                        <div class="info">
+                                            <h3>Clientes no SISZAP</h3>
+                                            <h1>14,147</h1>
+                                        </div>
+                                        <div class="progresss">
+                                            <svg>
+                                                <circle cx="38" cy="38" r="36"></circle>
+                                            </svg>
+                                            <div class="percentage">
+                                                <p>+21%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="recent-orders">
+                                <h2>Afazeres</h2>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Data</th>
+                                            <th>Hora</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <a href="#">Show All</a>
+                            </div>
+                            
+
+                            <div class="new-users">
+                                <div class="user-list">
+                                <canvas id="barChart" width="700" height="400"></canvas>
+                                </div>
+                            </div>
+                        </main>
+
+                        <div class="right-section">
+                            <div class="nav">
+                                <button id="menu-btn">
+                                    <span class="material-icons-sharp">
+                                        menu
+                                    </span>
+                                </button>
+
+
+                                <div class="profile">
+                                    <div class="info">
+                                        <p>ola, <b>NomeDoUsuario</b></p>
+                                        <small class="text-muted">Admin</small>
+                                    </div>
+                                    <div class="profile-photo">
+                                        <img src="images/profile-1.jpg">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="user-profile">
+                                <div class="logo">
+                                    <img src="images/login.png">
+                                    <h2>Josiane Pereira</h2>
+                                    <p>Advogada</p>
+                                </div>
+                            </div>
+
+                            <div class="reminders">
+                                <div class="header">
+                                    <h2>Lembretes</h2>
+                                    <span class="material-icons-sharp">
+                                        notifications_none
+                                    </span>
+                                </div>
+
+                                <div class="notification">
+                                    <div class="icon">
+                                        <span class="material-icons-sharp">
+                                            volume_up
+                                        </span>
+                                    </div>
+                                    <div class="content">
+                                        <div class="info">
+                                            <h3>Workshop</h3>
+                                            <small class="text_muted">
+                                                08:00 AM - 12:00 PM
+                                            </small>
+                                        </div>
+                                        <span class="material-icons-sharp">
+                                            more_vert
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="notification deactive">
+                                    <div class="icon">
+                                        <span class="material-icons-sharp">
+                                            edit
+                                        </span>
+                                    </div>
+                                    <div class="content">
+                                        <div class="info">
+                                            <h3>Workshop</h3>
+                                            <small class="text_muted">
+                                                08:00 AM - 12:00 PM
+                                            </small>
+                                        </div>
+                                        <span class="material-icons-sharp">
+                                            more_vert
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="notification add-reminder">
+                                    <div>
+                                        <span class="material-icons-sharp">
+                                            add
+                                        </span>
+                                        <h3>Add Lembrete</h3>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <script>
+
+                    var hamburger = document.querySelector(".hamburger");
+                    hamburger.addEventListener("click", function () {
+                        document.querySelector("body").classList.toggle("active");
+                    })
+                </script>
+
+                <script>
+                    // Seleciona o link de logout
+                    var logoutLink = document.querySelector('.logout-link');
+
+                    // Adiciona um listener de evento para o clique no link
+                    logoutLink.addEventListener('click', function (event) {
+                        event.preventDefault(); // Impede o comportamento padrão do link
+
+                        // Faz a requisição para o arquivo logout.php
+                        fetch('/js/logout.php')
+                            .then(function (response) {
+                                // Lida com a resposta da requisição
+                                if (response.ok) {
+                                    // Logout realizado com sucesso
+                                    window.location.href = '/index.html'; // Redireciona para a página inicial após o logout
+                                } else {
+                                    // Ocorreu um erro no logout
+                                    console.log('Erro no logout');
+                                }
+                            })
+                            .catch(function (error) {
+                                // Ocorreu um erro na requisição
+                                console.log('Erro na requisição de logout:', error);
+                            });
+                    });
+                </script>
+                <script src="orders.js"></script>
+                <script src="index.js"></script>
+</body>
+
+</html>
